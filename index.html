@@ -2,12 +2,12 @@
   <script src="core.js"></script>
   <script>
     function f(i,o){
-      o.innerText = eval(i).to_string_with_brakets();
+      o.innerText = eval(i.value).to_string_with_brakets();
     }
   </script>
 </head>
 <body>
   ⚠️ text only!
-  <textarea onchange = "f(this, document.getElementById('text')"></textarea>
-  <div id="text">wait...</div>
+  <textarea onchange = "f(this, document.getElementById('text'))"></textarea>
+  <div id="text">wait for...</div>
 </body>
