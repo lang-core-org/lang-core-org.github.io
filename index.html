@@ -1,13 +1,21 @@
 <head>
   <script src="core.js"></script>
   <script>
-    function f(i,o){
-      o.innerText = eval(i.value).to_string_with_brakets();
+    // 建议把 eval 放在 try-catch 里，不然语法写错一次，整个页面就挂了
+    function f(val, outputElement) {
+      try {
+        const res = eval(val);
+        // 确保 eval 出来的是您定义的 expr 实例
+        outputElement.innerText = res.to_string_with_brakets();
+      } catch (e) {
+        outputElement.innerText = "Error: " + e.message;
+      }
     }
   </script>
 </head>
 <body>
-  ⚠️ text only!
-  <textarea onchange = "f(this, document.getElementById('text'))"></textarea>
-  <div id="text">wait for...</div>
+  ⚠️ text only!<br>
+  <textarea oninput="f(this.value, document.getElementById('text'))" 
+            style="width: 400px; height: 100px;"></textarea>
+  <div id="text" style="font-family: monospace; color: blue;">wait...</div>
 </body>
