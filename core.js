@@ -128,6 +128,7 @@ class expr_symbol extends expr{
     
     constructor(symbol){
         if(typeof(symbol) === "string"){
+            super([]); //useless
             this.#symbol = symbol;
         }else{
             throw new Error("illegal symbol");
