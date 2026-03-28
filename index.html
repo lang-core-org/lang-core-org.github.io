@@ -1,1 +1,13 @@
-hello world!
+<head>
+  <script url="core.js"></script>
+  <script>
+    function f(i,o){
+      o.innerText = eval(i).to_string_with_brakets();
+    }
+  </script>
+</head>
+<body>
+  ⚠️ text only!
+  <textarea onchange = "f(this, document.getElementById('text')"></textarea>
+  <div id="text"></div>
+</body>
