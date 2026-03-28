@@ -1,5 +1,5 @@
 <head>
-  <script url="core.js"></script>
+  <script src="core.js"></script>
   <script>
     function f(i,o){
       o.innerText = eval(i).to_string_with_brakets();
@@ -9,5 +9,5 @@
 <body>
   ⚠️ text only!
   <textarea onchange = "f(this, document.getElementById('text')"></textarea>
-  <div id="text"></div>
+  <div id="text">wait...</div>
 </body>
