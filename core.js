@@ -26,7 +26,18 @@ class expr{
     }
 
     static #simple(list){
-        //todo
+        //(...(+++)) => (...+++)
+        if(
+            (list.length > 0) &&
+            (list[list.length - 1].constructor === expr)
+        ){
+            return expr.#simple(
+                list.slice(0,list.length - 1)
+                .concat(...list[list.length - 1].#list)
+            );
+        }else{
+            return list;
+        }
     }
 
     constructor(list){
@@ -64,7 +75,15 @@ class expr_const extends expr{
     }
 
     static #simple(list){
-        //todo
+        //[[...]] -> [...]
+        if(
+            (list.length === 1) &&
+            (list[0].constructor === expr_const)
+        ){
+            return expr_const.#simple(list[0]);
+        }else{
+            return list;
+        }
     }
 
     constructor(list){
