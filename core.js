@@ -24,6 +24,12 @@ class expr{
     static parse(src){
         //todo
     }
+    
+    *[Symbol.iterator](){
+        for(let e of this.#list){
+            yield e;
+        }
+    }
 
     static #simple(list){
         //(...(+++)) => (...+++)
@@ -31,10 +37,8 @@ class expr{
             (list.length > 0) &&
             (list[list.length - 1].constructor === expr)
         ){
-            return expr.#simple(
-                list.slice(0,list.length - 1)
-                .concat(...list[list.length - 1].#list)
-            );
+            return list.slice(0,list.length - 1)
+                       .concat(...list[list.length - 1]);
         }else{
             return list;
         }
@@ -80,7 +84,7 @@ class expr_const extends expr{
             (list.length === 1) &&
             (list[0].constructor === expr_const)
         ){
-            return expr_const.#simple(list[0]);
+            return [...list[0]];
         }else{
             return list;
         }
@@ -118,6 +122,10 @@ class expr_symbol extends expr{
         
     }
 
+    *[Symbol.iterator](){
+        yield this.#symbol;
+    }
+    
     constructor(symbol){
         if(typeof(symbol) === "string"){
             this.#symbol = symbol;
