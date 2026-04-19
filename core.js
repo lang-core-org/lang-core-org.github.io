@@ -83,7 +83,7 @@ des: maps to [_(_T*'_)_] by
      3. replace all (_S_) in (_T*'_) into [_E_] 
         expect in [_T..._] or (_S T*''_)
      4. mapped (_T*'_) until it expect received
-note:  [_E_] will be mapped if need, then remember 
+note: [_E_] will be mapped if need, then remember 
 
 form:
      1. (_E T*_)
