@@ -1,3 +1,101 @@
+//the standard
+function core(){
+    return
+`\
+
+=====PREPARE=====
+
+symbol: S
+des: string matches /^[^\\(\\)\\[\\]\\s]+$/v
+
+symbol: T
+form:
+     1. S
+     2. E
+note: E see below
+
+symbol: T*
+form:
+     1. T
+     2. T T*
+note: form 2 T and T*  sbilt by 
+      string matches /^\\s+$/v
+
+symbol: T...
+form:
+     1. 
+     2. T*
+note: form 1 is empty string
+
+symbol: _
+des: string matches /^\\s*$/v
+
+=====BOUND=====
+
+symbol: B
+form:
+     1. SE
+     2. SE B
+note: form 2 SE and B  sbilt by 
+      string matches /^\\s+$/v
+
+form: SE
+des: S bounds E
+note: 
+     1. S could bounds once
+     2. S is no bounds in default
+     3. E will be mapped if need, but no remember
+     4. E see below
+
+=====DEFINED=====
+
+symbol: E
+form:
+     1. (_T..._)
+     2. [_T..._]
+trans:
+     1. E is (_E_)
+     2. [_T..._] is [_[_T..._]_]
+     3. [_T..._] is [_(_T..._)_]
+     4. (_T T*_) is (_T (_T*_)_)
+     5. [_T T*_] is [_T (_T*_)_]
+
+=====MAP=====
+
+form:
+     1. (_)
+     2. [_]
+des: maps to [_]  whatever it expect received
+
+form:
+     1. (_S_)
+     2. [_S_]
+des:
+     1. S bounds E: replaced to [_E_]
+     2. otherwise: replaced to [_]
+
+form:
+     1. (_S T*_)
+     2. [_S T*_]
+des: maps to [_(_T*'_)_] by
+     1. expect received E
+     2. copy T* as (_T*'_)
+     3. replace all (_S_) in (_T*'_) into [_E_] 
+        expect in [_T..._] or (_S T*''_)
+     4. mapped (_T*'_) until it expect received
+note:  [_E_] will be mapped if need, then remember 
+
+form:
+     1. (_E T*_)
+     2. [_E T*_]
+des: maps to [_E'_] by E received (_T*_) returns E'
+
+`;
+}
+
+//wait to reflector
+
+
 class expr{
     #list;
 
