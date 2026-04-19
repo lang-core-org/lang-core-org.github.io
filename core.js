@@ -18,7 +18,7 @@ symbol: T*
 form:
      1. T
      2. T T*
-note: form 2 T and T*  sbilt by 
+note: form 2 T and T* sbilt by 
       string matches /^\\s+$/v
 
 symbol: T...
@@ -36,7 +36,7 @@ symbol: B
 form:
      1. SE
      2. SE B
-note: form 2 SE and B  sbilt by 
+note: form 2 SE and B sbilt by 
       string matches /^\\s+$/v
 
 form: SE
@@ -65,7 +65,7 @@ trans:
 form:
      1. (_)
      2. [_]
-des: maps to [_]  whatever it expect received
+des: maps to [_] whatever it expect received
 
 form:
      1. (_S_)
