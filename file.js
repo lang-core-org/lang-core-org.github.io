@@ -2,7 +2,7 @@
 class file{
   
   static of(dir = "downloads"){
-    return windows.showDirectoryPicker(
+    return window.showDirectoryPicker(
       {
         mode:"readwrite",
         startIn:dir
