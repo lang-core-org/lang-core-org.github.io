@@ -25,14 +25,13 @@ class file{
         file_name,
         { create: true }
       ).then(
-        (fhandle) => fhandle.createWritable(
-          {
-            mode: "exclusive"
-          }
-        )
+        (fhandle) => fhandle.createWritable()
       ).then(
-        (writer) => writer.write(data).finally(
-          (__) => writer.close()
+        (writer) => writer.write(data).then(
+          (__) => writer.close(),
+          (e) => write.abort().then(
+            (__) => Promise.reject(e)
+          )
         )
       );
   }
