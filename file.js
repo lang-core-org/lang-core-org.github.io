@@ -29,7 +29,7 @@ class file{
       ).then(
         (writer) => writer.write(data).then(
           (__) => writer.close(),
-          (e) => write.abort().then(
+          (e) => writer.abort().then(
             (__) => Promise.reject(e)
           )
         )
