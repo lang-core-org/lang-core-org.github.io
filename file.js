@@ -1,4 +1,4 @@
-/*baseline framework*/
+/*baseline framework, cowork with Gemini*/
 class file{
   
   static of(dir = "downloads"){
