@@ -4,6 +4,7 @@ class dialog{
   static #fdialog = () => {
     let dlog = document.createElement("dialog");
     dlog.style.border = "none";
+    dlog.style.outline = "none";
     dlog.style.borderRadius = "1rem";
     dlog.addEventListener(
       "cancel", 
