@@ -7,8 +7,15 @@ class dialog{
     dlog.style.borderRadius = "1rem";
     dlog.style.padding = "1.5rem";
     dlog.style.textAlign = "center";
-    document.body.append(dlog);
-    dialog.#fdialog = () => dlog;
+    
+    dialog.#fdialog = () => {
+      if(dlog.isConnected){
+        return dlog;
+      }else{
+        document.body.append(dlog);
+        return dlog;
+      }
+    };
   };
 
   static #fbutton(text, bgcolor, fpointerdown) {
