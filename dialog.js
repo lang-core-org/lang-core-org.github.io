@@ -5,6 +5,7 @@ class dialog{
     let dlog = document.createElement("dialog");
     dlog.style.border = "none";
     dlog.style.outline = "none";
+    dlog.style.backgroundColor = "ivory";
     dlog.style.borderRadius = "1rem";
     dlog.addEventListener(
       "cancel", 
@@ -17,6 +18,8 @@ class dialog{
     
     let text = document.createElement("pre");
     text.style.fontSize = "1.1rem";
+    text.style.fontFamily = "monospace";
+    text.style.color = "peru";
     
     let promises = document.createElement("div");
     promises.style.display = "flex";
