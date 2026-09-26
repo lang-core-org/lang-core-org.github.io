@@ -24,7 +24,7 @@ class dialog{
     let reject = document.createElement("div");
     reject.textContent = `✗`;
     reject.style.backgroundColor = "red";
-    reject.style.borderRadius = "0.75rem";
+    reject.style.borderRadius = "0.25rem";
     reject.style.flex = "1";
     reject.addEventListener(
       "pointerdown",
@@ -35,7 +35,7 @@ class dialog{
     let resolve = document.createElement("div");
     resolve.textContent = `✔`;
     resolve.style.backgroundColor = "green";
-    resolve.style.borderRadius = "0.75rem";
+    resolve.style.borderRadius = "0.25rem";
     resolve.style.flex = "1";
     resolve.addEventListener(
       "pointerdown",
