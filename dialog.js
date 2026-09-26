@@ -5,7 +5,11 @@ class dialog{
     let dlog = document.createElement("dialog");
     dlog.style.border = "none";
     dlog.style.borderRadius = "1rem";
-    dlog.style.padding = "1.5rem";
+    dlog.addEventListener(
+      "cancel", e => {
+        e.preventDefault();
+      }
+    );
     
     let text = document.createElement("pre");
     
