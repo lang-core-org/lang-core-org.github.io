@@ -24,46 +24,57 @@ class dialog{
     reject.style.backgroundColor = "red";
     reject.style.borderRadius = "0.75rem";
     reject.style.flex = "1";
+    reject.addEventListener(
+      "pointerdown",
+      (e) => {
+        dlog.close(Promise.reject());
+      };
+    );
+    
     
     let resolve = document.createElement("div");
     resolve.textContent = `✔`;
     resolve.style.backgroundColor = "green";
     resolve.style.borderRadius = "0.75rem";
     resolve.style.flex = "1";
+    reslove.addEventListener(
+      "pointerdown",
+      (e) => {
+        dlog.close(Promise.reslove());
+      };
+    );
 
     promises.append(reject, resolve);
     dlog.append(text, promises);
+
+    let universe_dialog = (
+      content,
+      rejectable
+    ){
+      text.textContent = content;
+      reject.hidden = !rejectable;
+      return new Promise(
+        (resolve,reject) => {
+          dlog.addEventListener(
+            "close",
+            (e) => reslove(dlog.returnValue),
+            { once:true }
+          );
+        }
+      ).then(val => val);
+    };
     
     dialog.#fdialog = () => {
       if(dlog.isConnected){
-        return dlog;
+        return universe_dialog;
       }else{
         document.body.append(dlog);
-        return dlog;
+        return universe_dialog;
       }
     };
 
     return dialog.#fdialog();
   };
-
-  static #fbutton(text, bgcolor, fpointerdown) {
-    const div = document.createElement("div");
-    
-    div.textContent = text;
-    div.style.backgroundColor = bgcolor;
-    div.style.borderRadius = "0.75rem";
-    div.style.padding = "0.6rem 1.2rem";
-    div.style.textAlign = "center";
-    div.style.cursor = "pointer";
-    div.style.userSelect = "none";
-    
-    div.addEventListener(
-      "pointerdown", 
-      fpointerdown
-    );
-    
-    return div;
-  }
 
 
   
