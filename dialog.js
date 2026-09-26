@@ -6,9 +6,12 @@ class dialog{
     dlog.style.border = "none";
     dlog.style.borderRadius = "1rem";
     dlog.addEventListener(
-      "cancel", e => {
-        e.preventDefault();
-      }
+      "cancel", 
+      (e) => e.preventDefault()
+    );
+    dlog.addEventListener(
+      "pointerdown",
+      (e) => e.stopPropagation()
     );
     
     let text = document.createElement("pre");
