@@ -55,8 +55,6 @@ class dialog{
       reject.hidden = !rejectable;
       return new Promise(
         (resolve,reject) => {
-          dlog.showModel();
-          
           dlog.addEventListener(
             "close",
             (e) => {
@@ -65,7 +63,7 @@ class dialog{
                   reject();
                   break;
                 case `✔`:
-                  reslove();
+                  resolve();
                   break;
                 default:
                   //Promise stay pending
@@ -74,6 +72,8 @@ class dialog{
             },
             { once:true }
           );
+
+          dlog.showModal();
         }
       );
     };
