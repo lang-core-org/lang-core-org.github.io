@@ -12,12 +12,14 @@ class dialog{
     );
     
     let text = document.createElement("pre");
+    text.style.fontSize = "1.1rem";
     
     let promises = document.createElement("div");
     promises.style.display = "flex";
     promises.style.gap = "1rem";
     promises.style.color = "yellow";
     promises.style.textAlign = "center";
+    promises.style.fontSize = "1.2rem";
     
     let reject = document.createElement("div");
     reject.textContent = `✗`;
@@ -26,9 +28,7 @@ class dialog{
     reject.style.flex = "1";
     reject.addEventListener(
       "pointerdown",
-      (e) => {
-        dlog.close(`✗`);
-      };
+      (e) => dlog.close(`✗`)
     );
     
     
@@ -37,11 +37,9 @@ class dialog{
     resolve.style.backgroundColor = "green";
     resolve.style.borderRadius = "0.75rem";
     resolve.style.flex = "1";
-    reslove.addEventListener(
+    resolve.addEventListener(
       "pointerdown",
-      (e) => {
-        dlog.close(`✔`);
-      };
+      (e) => dlog.close(`✔`)
     );
 
     promises.append(reject, resolve);
