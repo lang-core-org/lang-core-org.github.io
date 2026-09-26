@@ -50,7 +50,7 @@ class dialog{
     let universe_dialog = (
       content,
       rejectable
-    ){
+    ) => {
       text.textContent = content;
       reject.hidden = !rejectable;
       return new Promise(
