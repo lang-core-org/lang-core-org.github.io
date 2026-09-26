@@ -27,7 +27,7 @@ class dialog{
     reject.addEventListener(
       "pointerdown",
       (e) => {
-        dlog.close(Promise.reject());
+        dlog.close(`✗`);
       };
     );
     
@@ -40,7 +40,7 @@ class dialog{
     reslove.addEventListener(
       "pointerdown",
       (e) => {
-        dlog.close(Promise.reslove());
+        dlog.close(`✔`);
       };
     );
 
@@ -55,13 +55,27 @@ class dialog{
       reject.hidden = !rejectable;
       return new Promise(
         (resolve,reject) => {
+          dlog.showModel();
+          
           dlog.addEventListener(
             "close",
-            (e) => reslove(dlog.returnValue),
+            (e) => {
+              switch(dlog.returnValue){
+                case `✗`:
+                  reject();
+                  break;
+                case `✔`:
+                  reslove();
+                  break;
+                default:
+                  //Promise stay pending
+                  break;
+              }
+            },
             { once:true }
           );
         }
-      ).then(val => val);
+      );
     };
     
     dialog.#fdialog = () => {
@@ -76,11 +90,30 @@ class dialog{
     return dialog.#fdialog();
   };
 
+  /*
+  return a Promise that will be resolved
+  NOTE: if Promise pending after dialog close,
+  it's a bug.
+  */
+  static notice(information){
+    return dialog.#fdialog()(
+      information,
+      false
+    );
+  }
 
-  
-
-  static alert(info){
-    
+  /*
+  return Promise that:
+  reslove if ✔
+  reject if ✗
+  NOTE: if Promise pending after dialog close,
+  it's a bug.
+  */
+  static ask(question){
+    return dialog.#fdialog()(
+      question,
+      true
+    );
   }
   
 }
