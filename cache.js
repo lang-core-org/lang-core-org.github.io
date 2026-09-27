@@ -13,18 +13,18 @@ usage step:
 */
 if(typeof document === "undefined"){
   //worker
-  function fetch_resource(cache,url){
+  function fetch_resource(cache,request){
     if(navigator.onLine === true){
-      //online,fetch and cache
-      return fetch(url).then(
+      //online, fetch and cache
+      return fetch(request).then(
         (content) => {
-          cache.put(url, content.clone());
+          cache.put(request, content.clone());
           return content;
         }
       );
     }else{
       //offline, use cache
-      return cache.match(url);
+      return cache.match(request);
     }
   }
   
@@ -33,7 +33,7 @@ if(typeof document === "undefined"){
       caches.open("cache").then(
         (cache) => fetch_resource(
           cache,
-          event.request
+          resource.request
         )
       )
     );
