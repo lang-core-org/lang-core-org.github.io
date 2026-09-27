@@ -47,5 +47,8 @@ if(typeof document === "undefined"){
   
 }else{
   //document
-  navigator.serviceWorker?.register('cache.js');
+  navigator.serviceWorker?.register(
+     'cache.js',
+     {updateViaCache:"none"}
+  );
 }
