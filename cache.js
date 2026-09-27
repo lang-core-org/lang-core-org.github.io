@@ -8,7 +8,7 @@ usage step:
 2. in the same dir of html before:
    a. create cache.js
    b. write the following line:
-     importScripts("https://lang-core.org/cache.js");
+importScripts("https://lang-core.org/cache.js");
 */
 if(typeof document === "undefined"){
   //worker
