@@ -9,7 +9,6 @@ usage step:
    a. create cache.js
    b. write the following line:
      importScripts("https://lang-core.org/cache.js");
-}
 */
 if(typeof document === "undefined"){
   //worker
