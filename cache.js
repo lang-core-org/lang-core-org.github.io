@@ -4,7 +4,8 @@ a simple service worker:
 2. used cache if offline
 usage step:
 1. in the html:
-<script src="lang-core.org/cache.js"></script>
+<script src="https://lang-core.org/cache.js"></script>
+
 2. in the same dir of html before:
    a. create cache.js
    b. write the following line:
