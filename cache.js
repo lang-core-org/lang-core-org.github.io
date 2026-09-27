@@ -1,4 +1,4 @@
-/*framework by me, cowork with Cluade
+/*framework by me, cowork with Cluade, Deepseek
 a simple service worker:
 1. fetch and cache if online
 2. used cache if offline
@@ -15,7 +15,10 @@ importScripts("https://lang-core.org/cache.js");
 if(typeof document === "undefined"){
   //worker
   function fetch_resource(cache,request){
-    if(navigator.onLine === true){
+    if(request.method !== "GET"){
+       //fetch, no chache
+       return fetch(request);
+    }else if(navigator.onLine === true){
       //online, fetch and cache
       return fetch(request).then(
         (content) => {
