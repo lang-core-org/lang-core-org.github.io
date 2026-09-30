@@ -34,7 +34,7 @@ class dialog{
     reject.style.borderRadius = "0.25rem";
     reject.style.flex = "1";
     reject.addEventListener(
-      "pointerdown",
+      "click",
       (e) => dlog.close(`✗`)
     );
     
@@ -45,7 +45,7 @@ class dialog{
     resolve.style.borderRadius = "0.25rem";
     resolve.style.flex = "1";
     resolve.addEventListener(
-      "pointerdown",
+      "click",
       (e) => dlog.close(`✔`)
     );
 
@@ -87,7 +87,7 @@ class dialog{
       if(dlog.isConnected){
         return universe_dialog;
       }else{
-        document.body.append(dlog);
+        document.documentElement.append(dlog);
         return universe_dialog;
       }
     };
